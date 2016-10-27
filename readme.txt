@@ -47,6 +47,7 @@ Things covered in this app:
     Register Models in Django Admin
     Django Migrations
     Django builtin Template tags & Filters
+    Django Crispy Forms
     Jinja Template
     Mysql DB
     Bootstrap
