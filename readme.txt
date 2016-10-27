@@ -19,14 +19,18 @@ flush PRIVILEGES;
 python manage.py makemigrations
 python manage.py migrate
 
+# Create a superuser
+python manage.py createsuperuser
+
 # Collect static files
 python manage.py collectstatic
-
 
 
 User Guide:
      To create a new Recipe user must logged in
         In My Recipe tab there is an option to Create Recipe
+        
+     We have two tabs one is Home tab which displays all posts, My Recipe Tab which displays user posted Recipes.
 
 
 Things covered in this app:
