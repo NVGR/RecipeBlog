@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block pageContent %}
+    <!-- page content -->
+
+    <h1 class="text-primary">{{ user.username | title }} Recipe page</h1>
+    {% include 'myrecipe/message.html' %}
+    {% include 'myrecipe/recipe_content.html' %}
+
+{% endblock %}
+
+{% block customJsFiles %}
+    <!-- Add all your custom js files here.... -->
+{% endblock %}

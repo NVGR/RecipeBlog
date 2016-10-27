@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block pageContent %}
+    <div class="container-fluid">
+        <div class="col-md-4" style="margin-right:auto; margin-left:auto; float: none">
+            <div class="panel panel-default">
+                <div style="margin:25px;" >
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

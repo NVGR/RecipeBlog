@@ -1,0 +1,29 @@
+.btn-space {
+    padding-left: 5px !important;
+}
+
+.text-indent {
+    text-indent:10%;
+}
+a, a:hover {
+     text-decoration: none !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+input[type="text"].pull-right{
+    height:30px;
+}
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}

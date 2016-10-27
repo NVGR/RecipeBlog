@@ -1,0 +1,62 @@
+{% load static %}
+<div class='btn-toolbar'>
+    {% if page_id == "recipe"  %}
+        <a href="{% url 'recipe:Create_Recipe' %}" class="btn pull-right btn-primary" role="button">Create Recipe</a>
+    {% endif %}
+
+    <form method="GET" action="">
+        <input type="text" name="query" placeholder="Search Recipe" value="{{ request.GET.query}}" class="pull-right"/>
+    </form>
+</div>
+
+<div class="row">
+    {% for obj in recipes_list %}
+
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                <div class="captain">
+                    {% if page_id == "recipe" %}
+
+                        <div>
+                            <a href="{% url 'recipe:Update_Recipe' recipe_id=obj.recipe_id %}?next={% url 'recipe:List_Recipe' %}" class=" pull-right btn-space">
+                                <span><i class="glyphicon glyphicon-pencil fa-fw"></i></span></a>
+
+                            <a href="{% url 'recipe:Delete_Recipe' recipe_id=obj.recipe_id %}?next={% url 'recipe:List_Recipe' %}" class="pull-right btn-space">
+                                <span style="color:red"><i class="glyphicon glyphicon-trash fa-fw"></i></span></a>
+                        </div>
+
+                    {% endif %}
+
+                    <h3 class="no-margin"><a href="{% url 'recipe:Detail_Recipe' recipe_id=obj.recipe_id %}" style="color: green">{{ obj.title | title }}</a></h3>
+                        <h4 class="no-margin"><small>{{ obj.owner | title}},  {{ obj.timestamp }}</small></h4>
+                    <p>{{ obj.description|linebreaks|truncatewords:10 }}</p>
+
+                    <div class='btn-toolbar'>
+                        <a href="{% url 'recipe:Detail_Recipe' recipe_id=obj.recipe_id %}" class="btn pull-right btn-primary" role="button">View</a>
+                        {% if page_id == "recipe" %}
+                            <a href="{% url 'recipe:Create_Step' recipe_id=obj.recipe_id %}" class="btn pull-right btn-primary" role="button">Add Step</a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <div class="pagination col-sm-12 Captain">
+        <span class="step-links pull-right">
+            {% if recipes_list.has_previous %}
+                <a href="?page={{ recipes_list.previous_page_number }}{% if request.GET.query %}&query={{ request.GET.query }}{% endif %}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ recipes_list.number }} of {{ recipes_list.paginator.num_pages }}.
+            </span>
+
+            {% if recipes_list.has_next %}
+                <a href="?page={{ recipes_list.next_page_number }}{% if request.GET.query %}&query={{ request.GET.query }}{% endif %}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
